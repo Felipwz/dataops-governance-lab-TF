@@ -2,7 +2,7 @@
 
 ## 📋 Sobre o Repositório
 
-Este repositório contém o material completo do curso **DataOps, Governança e Qualidade de Dados**, incluindo conceitos teóricos, laboratórios práticos com **PySpark** e **Great Expectations**, e um desafio final abrangente.
+Este repositório contém o material completo do curso **DataOps: Governança e Qualidade de Dados**, incluindo conceitos teóricos, laboratórios práticos com **PySpark** e **Great Expectations**, e um desafio final abrangente.
 
 ### 🎯 Objetivos do Curso
 - Dominar os **conceitos fundamentais** de DataOps: Governança de Dados
@@ -24,7 +24,8 @@ aulaGovernança/
 │   ├── logistica.csv                        # Dados de entrega (22 registros)
 │   └── README.md                            # Documentação dos datasets
 ├── 📓 notebooks/                            # Laboratórios práticos
-│   └── Lab_DataOps_Governanca_Qualidade.ipynb  # Lab com Great Expectations
+│   ├── Lab_DataOps_Governanca_Qualidade.ipynb  # Lab com Great Expectations
+│   └── exporaDataSets.ipynb                    # Exploração dos datasets
 ├── 🐳 Dockerfile                            # Configuração do ambiente
 ├── 🐳 docker-compose.yml                    # Orquestração dos serviços
 └── 📖 README.md                             # Este arquivo
@@ -128,21 +129,6 @@ Data Flow:
                 🗄️ Warehouse (Iceberg Tables)
 ```
 
-### Fluxo de Dados
-
-```
-┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│   Raw CSV   │───►│   PySpark   │───►│Great Expect.│───►│ Data Docs   │
-│   Datasets  │    │  DataFrame  │    │ Validation  │    │  Reports    │
-└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
-                           │
-                           ▼
-                   ┌─────────────┐
-                   │   Iceberg   │
-                   │  Warehouse  │
-                   └─────────────┘
-```
-
 ### Portas e Serviços
 
 | Serviço | Porta | Descrição |
@@ -183,7 +169,7 @@ Volume Mapping:
 1. **Abra o repositório no GitHub Codespaces:**
    ```bash
    # Clique em "Code" > "Codespaces" > "Create codespace on main"
-   # Ou use o link direto: https://github.com/seu-usuario/seu-repo/codespaces
+   # Ou use o link direto: https://github.com/AleTavares/dataops-governance-lab/codespaces
    ```
 
 2. **Execute o ambiente com Docker Compose:**
@@ -205,7 +191,7 @@ Volume Mapping:
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/seu-usuario/aulaGovernanca.git
+   git clone https://github.com/AleTavares/dataops-governance-lab.git
    cd aulaGovernanca
    ```
 
@@ -230,29 +216,6 @@ Volume Mapping:
    # Arquivos são persistidos automaticamente
    ```
 
-### Opção 3: Instalação Local (Python)
-
-1. **Pré-requisitos:**
-   ```bash
-   # Python 3.8+
-   # Java 8 ou 11 (para Spark)
-   # Docker e Docker Compose (recomendado)
-   ```
-
-2. **Clone e execute com Docker:**
-   ```bash
-   git clone https://github.com/seu-usuario/aulaGovernanca.git
-   cd aulaGovernanca
-   docker-compose up -d
-   ```
-
-3. **Ou instale manualmente:**
-   ```bash
-   pip install pyspark==3.3.0 great-expectations pandas jupyter matplotlib
-   export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
-   jupyter notebook
-   ```
-
 ## 📚 Como Usar Este Repositório
 
 ### 1. 📖 Estude os Conceitos
@@ -261,37 +224,19 @@ Volume Mapping:
 cat Conceitos.md
 ```
 
-### 2. 🧪 Execute o Laboratório
+### 2. 🧪 Execute os Laboratórios
 ```bash
-# Abra o notebook no Jupyter
+# Explore os datasets primeiro
+notebooks/exporaDataSets.ipynb
+
+# Execute o laboratório principal
 notebooks/Lab_DataOps_Governanca_Qualidade.ipynb
 ```
 
 ### 3. 🎯 Realize o Desafio
-```bash
-# Leia as instruções do desafio
-cat Desafio_Final_DataOps.md
+(Desafio)[Desafio_Final_DataOps.md]
 
 # Use os datasets fornecidos
-ls datasets/
-```
-
-### 4. 📊 Explore os Dados
-```python
-# Exemplo de carregamento dos dados
-import pandas as pd
-
-# Carregar datasets
-clientes = pd.read_csv('datasets/clientes.csv')
-produtos = pd.read_csv('datasets/produtos.csv')
-vendas = pd.read_csv('datasets/vendas.csv')
-logistica = pd.read_csv('datasets/logistica.csv')
-
-print(f"Clientes: {len(clientes)} registros")
-print(f"Produtos: {len(produtos)} registros")
-print(f"Vendas: {len(vendas)} registros")
-print(f"Logística: {len(logistica)} registros")
-```
 
 ## 🎓 Roteiro de Aprendizagem
 
@@ -302,9 +247,10 @@ print(f"Logística: {len(logistica)} registros")
 
 ### Módulo 2: Prática (2 horas)
 1. 🚀 Configure o ambiente (Docker ou Codespaces)
-2. 🧪 Execute o laboratório passo a passo
-3. 🔍 Experimente com Great Expectations
-4. 📈 Analise os Data Docs gerados
+2. 📊 Execute a exploração dos dados (`exporaDataSets.ipynb`)
+3. 🧪 Execute o laboratório principal passo a passo
+4. 🔍 Experimente com Great Expectations
+5. 📈 Analise os Data Docs gerados
 
 ### Módulo 3: Desafio (1 semana)
 1. 📋 Leia `Desafio_Final_DataOps.md`
@@ -353,6 +299,26 @@ docker-compose down
 docker-compose build --no-cache
 docker-compose up
 ```
+
+## 📊 Notebooks Disponíveis
+
+### 🔍 **exporaDataSets.ipynb** - Exploração Inicial dos Dados
+Notebook introdutório que demonstra como:
+- Carregar os 4 datasets do projeto TechCommerce
+- Verificar estrutura e quantidade de registros
+- Identificar valores nulos e problemas básicos
+- Criar análises consolidadas dos dados
+
+**Ideal para**: Primeiro contato com os dados e compreensão da estrutura.
+
+### 🧪 **Lab_DataOps_Governanca_Qualidade.ipynb** - Laboratório Principal
+Laboratório completo com Great Expectations para:
+- Implementar validações de qualidade
+- Aplicar as 6 dimensões da qualidade
+- Criar expectativas automatizadas
+- Gerar relatórios profissionais
+
+**Ideal para**: Aprendizado prático de DataOps e Great Expectations.
 
 ## 📊 Datasets do Desafio
 
@@ -438,9 +404,10 @@ docker logs pyspark_aula_container
 ```
 
 ### 📋 Próximos Passos
-1. **Execute o laboratório** - `notebooks/Lab_DataOps_Governanca_Qualidade.ipynb`
-2. **Realize o desafio** - `Desafio_Final_DataOps.md`
-3. **Torne-se um especialista em DataOps!**
+1. **Explore os dados** - `notebooks/exporaDataSets.ipynb`
+2. **Execute o laboratório** - `notebooks/Lab_DataOps_Governanca_Qualidade.ipynb`
+3. **Realize o desafio** - `Desafio_Final_DataOps.md`
+4. **Torne-se um especialista em DataOps!**
 
 **Que a força dos dados esteja com você!** 📊✨
 

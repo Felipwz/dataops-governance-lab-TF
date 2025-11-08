@@ -76,12 +76,18 @@ Este diretório contém os datasets da empresa **TechCommerce** com problemas in
 
 ## 🚀 Como Usar
 
-1. **Carregue os datasets** no seu ambiente PySpark
-2. **Analise os problemas** usando Great Expectations
-3. **Crie Expectation Suites** para cada dimensão da qualidade
-4. **Configure Checkpoints** para automação
-5. **Implemente correções** automáticas
-6. **Gere Data Docs** profissionais
+### 📓 Notebooks Disponíveis
+1. **`notebooks/exporaDataSets.ipynb`** - Exploração inicial dos dados
+2. **`notebooks/Lab_DataOps_Governanca_Qualidade.ipynb`** - Laboratório completo
+
+### 🔄 Fluxo Recomendado
+1. **Execute primeiro** `exporaDataSets.ipynb` para entender os dados
+2. **Carregue os datasets** no seu ambiente PySpark
+3. **Analise os problemas** usando Great Expectations
+4. **Crie Expectation Suites** para cada dimensão da qualidade
+5. **Configure Checkpoints** para automação
+6. **Implemente correções** automáticas
+7. **Gere Data Docs** profissionais
 
 ## 💡 Dicas
 
