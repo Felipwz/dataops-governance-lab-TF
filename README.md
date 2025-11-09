@@ -179,8 +179,7 @@ Volume Mapping:
 
 3. **Acesse o Jupyter Notebook:**
    - URL: http://localhost:8888
-   - Token: `tavares1234`
-   - Spark UI: http://localhost:4040
+   - Token: `dataops123`
 
 4. **Acesse o laboratório:**
    - Abra `notebooks/Lab_DataOps_Governanca_Qualidade.ipynb`
@@ -205,8 +204,7 @@ Volume Mapping:
 
 3. **Acesse o Jupyter Notebook:**
    - URL: http://localhost:8888
-   - Token: `tavares1234`
-   - Spark UI: http://localhost:4040
+   - Token: `dataops123`
 
 4. **Verifique os volumes:**
    ```bash

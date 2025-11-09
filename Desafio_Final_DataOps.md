@@ -100,9 +100,9 @@ id_entrega,id_venda,transportadora,data_envio,data_entrega_prevista,data_entrega
 
 ## 🚀 Tarefas do Desafio
 
-### **PARTE 1: Análise e Planejamento (20 pontos)**
+### **PARTE 1: Análise e Planejamento**
 
-#### 1.1 Documento de Governança (10 pontos)
+#### 1.1 Documento de Governança
 Crie um documento `governanca_techcommerce.md` contendo:
 
 - **Organograma de Dados**:
@@ -120,7 +120,7 @@ Crie um documento `governanca_techcommerce.md` contendo:
   - Padrões de formato (datas, telefones, emails)
   - Regras de relacionamento entre entidades
 
-#### 1.2 Análise de Problemas (10 pontos)
+#### 1.2 Análise de Problemas 
 Crie um notebook `analise_problemas.ipynb` que:
 
 - Carregue todos os datasets
@@ -129,9 +129,9 @@ Crie um notebook `analise_problemas.ipynb` que:
 - Calcule o **impacto** de cada problema (% de registros afetados)
 - Priorize os problemas por **criticidade**
 
-### **PARTE 2: Implementação do Pipeline (40 pontos)**
+### **PARTE 2: Implementação do Pipeline**
 
-#### 2.1 Pipeline de Ingestão (15 pontos)
+#### 2.1 Pipeline de Ingestão
 Crie `pipeline_ingestao.py` que:
 
 - Carregue dados de múltiplas fontes
@@ -140,7 +140,7 @@ Crie `pipeline_ingestao.py` que:
 - Registre **logs de auditoria** para cada operação
 - Trate **erros de formato** e **dados corrompidos**
 
-#### 2.2 Great Expectations - Expectation Suites (25 pontos)
+#### 2.2 Great Expectations - Expectation Suites
 Crie `great_expectations_setup.py` implementando:
 
 **Configuração do Data Context**:

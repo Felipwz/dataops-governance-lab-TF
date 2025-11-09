@@ -1,44 +1,20 @@
 version: '3.8'
 
 services:
-  # Define o serviço que chamaremos de 'pyspark-aula'
-  pyspark-aula:
-    # 1. Usa a imagem do Dockerfile local 
+  jupyter-lab:
     build: .
-    # 2. OU usa a imagem oficial diretamente (mais rápido se não houver customização), porem customizamos o usuario
-    # image: jupyter/pyspark-notebook
-    
-    container_name: pyspark_aula_container
-    
-    # Mapeia as portas
+    container_name: dataops_lab_container
     ports:
-      - "8888:8888" # Porta do Jupyter Notebook
-      - "4040:4040" # Porta da UI do Spark (importante para monitorar os jobs!)
-      
-    # Mapeia o diretório local para o contêiner (Persistência dos arquivos)
+      - "8888:8888"
     volumes:
-      # Cria um diretório 'notebooks' na raiz do seu projeto local
-      # e o mapeia para o WORKDIR do contêiner.
-      - ./notebooks:/home/tavares/work
-      # Mapeia um diretório 'data' para guardar os arquivos Parquet/ORC
-      - ./data:/home/tavares/data
-
-    # Variáveis de ambiente
+      - ./notebooks:/home/jovyan/work
+      - ./data:/home/jovyan/data
     environment:
-      # Token de acesso ao Jupyter (opcional, mas recomendado para segurança)
-      - JUPYTER_TOKEN=tavares1234
-      # Configurações do Spark (opcional, mas bom para aumentar a memória para testes)
-      - SPARK_DRIVER_MEMORY=4g
-      - SPARK_EXECUTOR_MEMORY=4g
-      
-    # Reinicia o contêiner em caso de falha
-    restart: always
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=dataops123
     networks:
-      - plataform-network
-      
+      - dataops-network
+
 networks:
-  plataform-network:
-    ipam:
-      driver: default
-      config:
-        - subnet: "172.16.240.0/24"
+  dataops-network:
+    driver: bridge
