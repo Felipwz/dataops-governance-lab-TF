@@ -1,0 +1,29 @@
+# Requirements - TechCommerce DataOps Challenge
+
+# Core Dependencies
+pandas==2.1.4
+numpy==1.26.2
+
+# Great Expectations
+great-expectations==0.18.8
+sqlalchemy==2.0.23
+
+# Utilities
+pyyaml==6.0.1
+python-dateutil==2.8.2
+
+# Logging
+loguru==0.7.2
+
+# Optional (Jupyter)
+jupyter==1.0.0
+jupyterlab==4.0.9
+ipykernel==6.27.1
+
+# Optional (Visualization)
+matplotlib==3.8.2
+seaborn==0.13.0
+
+# Optional (Testing)
+pytest==7.4.3
+pytest-cov==4.1.0

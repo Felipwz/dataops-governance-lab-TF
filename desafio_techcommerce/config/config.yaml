@@ -1,0 +1,116 @@
+# Dashboard de Qualidade - TechCommerce
+# Configuração
+
+project:
+  name: "TechCommerce DataOps"
+  version: "1.0.0"
+  description: "Pipeline de Governança e Qualidade de Dados"
+
+# Caminhos
+paths:
+  raw_data: "../notebooks/datasets"
+  processed_data: "../data/processed"
+  quality_reports: "../data/quality"
+  great_expectations: "../great_expectations"
+
+# Datasets
+datasets:
+  - name: "clientes_lab"
+    suite: "suite_clientes"
+    checkpoint: "checkpoint_clientes_lab"
+    critical_fields: ["id_cliente", "nome", "email"]
+    
+  - name: "produtos"
+    suite: "suite_produtos"
+    checkpoint: "checkpoint_produtos"
+    critical_fields: ["id_produto", "nome_produto", "preco"]
+    
+  - name: "vendas"
+    suite: "suite_vendas"
+    checkpoint: "checkpoint_vendas"
+    critical_fields: ["id_venda", "id_cliente", "id_produto", "valor_total"]
+    
+  - name: "logistica"
+    suite: "suite_logistica"
+    checkpoint: "checkpoint_logistica"
+    critical_fields: ["id_entrega", "id_venda", "status_entrega"]
+
+# Limites de Qualidade (%)
+quality_thresholds:
+  excellent: 98  # >= 98% = excelente
+  acceptable: 95  # >= 95% = aceitável
+  warning: 90     # >= 90% = alerta
+  critical: 90    # < 90% = crítico
+
+# Severidade de Alertas
+alert_thresholds:
+  low:
+    min_percentage: 1
+    max_percentage: 3
+    sla_hours: 168  # 7 dias
+    
+  medium:
+    min_percentage: 3
+    max_percentage: 5
+    sla_hours: 48
+    
+  high:
+    min_percentage: 5
+    max_percentage: 10
+    sla_hours: 24
+    
+  critical:
+    min_percentage: 10
+    max_percentage: 100
+    sla_hours: 4
+
+# Notificações
+notifications:
+  enabled: true
+  channels:
+    - type: "log"
+      enabled: true
+    - type: "email"
+      enabled: false
+      recipients: ["dataops@techcommerce.com"]
+    - type: "slack"
+      enabled: false
+      webhook_url: ""
+
+# Métricas de Qualidade (KPIs)
+kpis:
+  - name: "completude"
+    target: 98
+    tolerance: 95
+    
+  - name: "unicidade"
+    target: 100
+    tolerance: 99.5
+    
+  - name: "validade"
+    target: 97
+    tolerance: 95
+    
+  - name: "consistencia"
+    target: 99
+    tolerance: 97
+    
+  - name: "precisao"
+    target: 95
+    tolerance: 90
+    
+  - name: "atualidade"
+    target: 98
+    tolerance: 95
+
+# Auditoria
+audit:
+  enabled: true
+  retention_days: 730  # 2 anos
+  log_path: "../data/quality/audit_log.json"
+
+# Execução
+execution:
+  schedule: "daily"  # daily, hourly, realtime
+  retry_attempts: 3
+  timeout_seconds: 300
